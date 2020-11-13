@@ -1,0 +1,149 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "Plaintext",
+    "patterns": [
+        {
+            "include": "#keywords"
+        },
+        {
+            "include": "#strings"
+        },
+        {
+            "include": "#comments"
+        },
+        {
+            "include": "#meta"
+        }
+    ],
+    "repository": {
+        "strings": {
+            "patterns": [
+                {
+                    "include": "#quotes-double"
+                },
+                {
+                    "include": "#quotes-frenchie"
+                }
+            ]
+        },
+        "quotes-double": {
+            "name": "string.quoted.double.plaintext",
+            "begin": "\"",
+            "beginCaptures": {
+                "0": {
+                    "name": "punctuation.double.begin.plaintext"
+                }
+            },
+            "end": "\"",
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.double.end.plaintext"
+                }
+            }
+        },
+        "quotes-frenchie": {
+            "name": "string.quoted.frenchie.plaintext",
+            "begin": "«",
+            "beginCaptures": {
+                "0": {
+                    "name": "punctuation.frenchie.begin.plaintext"
+                }
+            },
+            "end": "»",
+            "endCaptures": {
+                "0": {
+                    "name": "punctuation.frenchie.end.plaintext"
+                }
+            }
+        },
+        "comments": {
+            "patterns": [
+                {
+                    "name": "comment.bullet.zero.plaintext",
+                    "begin": "(✓)",
+                    "beginCaptures": {
+                        "1": {
+                            "name": "punctuation.comment.line.plaintext"
+                        }
+                    },
+                    "end": "^(?=\\s{0}\\S)"
+                },
+                {
+                    "name": "comment.bullet.one.plaintext",
+                    "begin": "(\\s{2})(✓)",
+                    "beginCaptures": {
+                        "1": {
+                            "name": "punctuation.comment.lmao.plaintext"
+                        },
+                        "2": {
+                            "name": "punctuation.comment.line.plaintext"
+                        }
+                    },
+                    "end": "^(?=\\s{,2}\\S)"
+                },
+                {
+                    "name": "comment.bullet.two.plaintext",
+                    "begin": "(\\s{6})(✓)",
+                    "beginCaptures": {
+                        "1": {
+                            "name": "punctuation.comment.lmao.plaintext"
+                        },
+                        "2": {
+                            "name": "punctuation.comment.line.plaintext"
+                        }
+                    },
+                    "end": "^(?=\\s{,6}\\S)"
+                },
+                {
+                    "name": "comment.bullet.three.plaintext",
+                    "begin": "(\\s{10})(✓)",
+                    "beginCaptures": {
+                        "1": {
+                            "name": "punctuation.comment.lmao.plaintext"
+                        },
+                        "2": {
+                            "name": "punctuation.comment.line.plaintext"
+                        }
+                    },
+                    "end": "^(?=\\s{,10}\\S)"
+                },
+                {
+                    "name": "comment.bullet.four.plaintext",
+                    "begin": "(\\s{14})(✓)",
+                    "beginCaptures": {
+                        "1": {
+                            "name": "punctuation.comment.lmao.plaintext"
+                        },
+                        "2": {
+                            "name": "punctuation.comment.line.plaintext"
+                        }
+                    },
+                    "end": "^(?=\\s{,14}\\S)"
+                }
+            ]
+        },
+        "meta": {
+            "patterns": [
+                {
+                    "match": "(#).*$\\n?",
+                    "name": "meta.topic.plaintext",
+                    "captures": {
+                        "1": {
+                            "name": "punctuation.meta.topic.plaintext"
+                        }
+                    }
+                },
+                {
+                    "match": "(↳).*$\\n?",
+                    "name": "meta.subtopic.plaintext",
+                    "captures": {
+                        "1": {
+                            "name": "punctuation.meta.subtopic.plaintext"
+                        }
+                    }
+                }
+            ]
+        }
+    },
+    "scopeName": "source.txt"
+}
